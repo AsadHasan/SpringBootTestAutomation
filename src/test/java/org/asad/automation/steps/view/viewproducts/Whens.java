@@ -13,7 +13,7 @@ public class Whens implements En {
 
     public Whens() {
         When("^I try to shop by (.*)", (String department) -> {
-            homepage.shopBy();
+            homepage.shopBy().getCategories();
         });
     }
 }

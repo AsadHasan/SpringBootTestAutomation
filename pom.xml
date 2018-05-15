@@ -75,6 +75,14 @@
             <artifactId>webdrivermanager</artifactId>
             <version>2.2.1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-junit -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-junit</artifactId>
+            <version>1.0.0.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

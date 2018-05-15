@@ -6,13 +6,22 @@ import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class Homepage extends BasePage {
     @Value("${baseurl}")
     private String baseurl;
 
     @FindBy(css = "#nav-link-shopall")
-    private WebElement shopByDepartment;
+    private WebElement shopByDepartmentMenu;
+
+    @FindBy(css = "[data-nav-panelkey=HomeGardenPetsAndDIYPanel]")
+    private WebElement homeGardenPetsDiyOption;
+
+    @FindBy(css = ".nav-template>.nav-column>.nav-title.nav-item>.nav-text")
+    private List<WebElement> homeGardenPetsDiyOptions;
 
     public Homepage open() {
         driver.get(baseurl);
@@ -21,7 +30,20 @@ public class Homepage extends BasePage {
         return this;
     }
 
-    public void shopBy() {
-        moveTo(shopByDepartment);
+    public Homepage shopBy() {
+        moveTo(shopByDepartmentMenu)
+                .moveTo(homeGardenPetsDiyOption);
+        return this;
+    }
+
+    public List<String> getCategories() {
+        List<String> elementTexts = new ArrayList<>();
+        for (WebElement element : homeGardenPetsDiyOptions) {
+            String text = element.getText();
+            if (!text.isEmpty()) {
+                elementTexts.add(text);
+            }
+        }
+        return elementTexts;
     }
 }

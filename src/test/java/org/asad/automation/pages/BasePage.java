@@ -19,27 +19,28 @@ public class BasePage {
     @Value("${timeout}")
     private int timeout;
 
-    private Actions actionBuilder(){
+    private Actions actionBuilder() {
         return new Actions(driver);
     }
 
-    private WebDriverWait getWait(){
-        return new WebDriverWait(driver,timeout);
+    private WebDriverWait getWait() {
+        return new WebDriverWait(driver, timeout);
     }
 
-    protected void isLoaded(){
-        ExpectedCondition expectedCondition=new ExpectedCondition() {
+    protected void isLoaded() {
+        ExpectedCondition expectedCondition = new ExpectedCondition() {
             @Override
             public Object apply(Object o) {
-                return ((JavascriptExecutor)driver).executeScript("return document.readyState")
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState")
                         .toString().equals("complete");
             }
         };
         getWait().until(expectedCondition);
     }
 
-    protected void moveTo(WebElement element) {
+    protected BasePage moveTo(WebElement element) {
         getWait().until(ExpectedConditions.elementToBeClickable(element));
         actionBuilder().moveToElement(element).build().perform();
+        return this;
     }
 }

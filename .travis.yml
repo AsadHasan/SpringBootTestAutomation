@@ -1,4 +1,4 @@
 language: java
 before_install:
- - sudo chmod +x mvnw
- - sudo chmod +x ./mvnw
+ - chmod +x mvnw
+ - chmod +x ./mvnw

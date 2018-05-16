@@ -1,3 +1,5 @@
 language: java
 addons: # get google-chrome-stable
   chrome: stable
+script:
+  - whereis google-chrome-stable

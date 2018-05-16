@@ -25,6 +25,7 @@ public class DriverManager {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions chromeOptions=new ChromeOptions();
+                    chromeOptions.setBinary("/usr/bin/google-chrome-stable");
                     chromeOptions.addArguments("--headless");
                     driver = new ChromeDriver(chromeOptions);
                     break;

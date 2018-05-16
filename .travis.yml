@@ -1,3 +1,4 @@
 language: java
 before_script:
+ - sudo chmod +x mvnw
  - sudo chmod +x ./mvnw

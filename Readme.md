@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/68deea32d96146d0aa43e6c25e45eafc)](https://app.codacy.com/app/asadhasan180/SpringBootTestAutomation?utm_source=github.com&utm_medium=referral&utm_content=AsadHasan/SpringBootTestAutomation&utm_campaign=badger)
 [![CircleCI](https://circleci.com/gh/AsadHasan/SpringBootTestAutomation.svg?style=svg)](https://circleci.com/gh/AsadHasan/SpringBootTestAutomation)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7a2f0eff2bf2402c9f0993d578d57e54)](https://www.codacy.com/app/asadhasan180/SpringBootTestAutomation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AsadHasan/SpringBootTestAutomation&amp;utm_campaign=Badge_Grade)
 ### Amazon Automation Testing

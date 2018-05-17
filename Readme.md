@@ -4,7 +4,7 @@
 
 Automation testing of Amazon's website using Selenium-WebDriver, Cucumber-JVM and Spring Boot.
 
-##### To run the project locally
+#### To run the project locally
 Prerequisites: JDK 1.8
 
 Configuration: Set browser and WebDriver's wait time in src\main\resources\application.properties

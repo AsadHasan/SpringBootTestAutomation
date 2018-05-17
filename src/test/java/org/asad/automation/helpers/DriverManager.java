@@ -24,7 +24,7 @@ public class DriverManager {
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    ChromeOptions chromeOptions=new ChromeOptions();
+                    ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.setBinary("/usr/bin/google-chrome-stable");
                     chromeOptions.addArguments("--headless");
                     driver = new ChromeDriver(chromeOptions);
@@ -40,8 +40,9 @@ public class DriverManager {
                 case "edge":
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
+                    break;
                 default:
-                    System.out.println("Unsupported browser");
+                    throw new UnsupportedOperationException();
             }
         }
         return driver;

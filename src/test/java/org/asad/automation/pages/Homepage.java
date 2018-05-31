@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class Homepage extends BasePage {
@@ -37,13 +38,9 @@ public class Homepage extends BasePage {
     }
 
     public List<String> getCategories() {
-        List<String> elementTexts = new ArrayList<>();
-        for (WebElement element : homeGardenPetsDiyOptions) {
-            String text = element.getText();
-            if (!text.isEmpty()) {
-                elementTexts.add(text);
-            }
-        }
-        return elementTexts;
+        return homeGardenPetsDiyOptions.stream()
+                .filter(element -> !element.getText().isEmpty())
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
     }
 }

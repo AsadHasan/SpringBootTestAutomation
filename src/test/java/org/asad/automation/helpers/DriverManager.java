@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,13 +20,14 @@ public class DriverManager {
     private String browser;
 
     @Bean
+    @Scope("singleton")
     public WebDriver getDriver() {
         if (driver == null) {
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.addArguments("--headless");
+                 //   chromeOptions.addArguments("--headless");
                     driver = new ChromeDriver(chromeOptions);
                     break;
                 case "firefox":

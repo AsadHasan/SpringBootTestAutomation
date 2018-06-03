@@ -20,5 +20,5 @@ Feature: View products on Amazon
     And list of <categories> within that <sub-department>
 
     Examples:
-      | category                  | sub-department       | categories                                                                            |
+      | category                  | sub-department       | categories                                                                         |
       | Kitchen & Home Appliances | VACUUMS & FLOOR CARE | Upright Vacuums, Handheld Vacuums, Robotic Vacuums, Carpet Washers, Steam Cleaners |

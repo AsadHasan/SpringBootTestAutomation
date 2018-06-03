@@ -1,5 +1,6 @@
 package org.asad.automation.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class BasePage {
@@ -28,13 +31,7 @@ public class BasePage {
     }
 
     protected void isLoaded() {
-        ExpectedCondition expectedCondition = new ExpectedCondition() {
-            @Override
-            public Object apply(Object o) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState")
-                        .toString().equals("complete");
-            }
-        };
+        ExpectedCondition expectedCondition = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
         getWait().until(expectedCondition);
     }
 
@@ -42,5 +39,16 @@ public class BasePage {
         getWait().until(ExpectedConditions.elementToBeClickable(element));
         actionBuilder().moveToElement(element).build().perform();
         return this;
+    }
+
+    protected BasePage clickWhenReady(WebElement element) {
+        getWait().until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
+        return this;
+    }
+
+    protected List<WebElement> getElementsWhenReady(String locator) {
+        getWait().until(ExpectedConditions.elementToBeClickable(By.cssSelector(locator)));
+        return driver.findElements(By.cssSelector(locator));
     }
 }

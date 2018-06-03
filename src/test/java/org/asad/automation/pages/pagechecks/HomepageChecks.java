@@ -17,7 +17,7 @@ public class HomepageChecks {
 
     public void checkProductCategories(String categories) {
         List<String> expectedCategories = Arrays.asList(categories.split("\\s*;\\s*"));
-        List<String> actualCategories = homepage.getCategories();
+        List<String> actualCategories = homepage.getDepartmentalCategories();
         assertThat(expectedCategories, is(actualCategories));
     }
 }

@@ -1,5 +1,6 @@
 package org.asad.automation.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,11 +18,8 @@ public class Homepage extends BasePage {
     @FindBy(css = "#nav-link-shopall")
     private WebElement shopByDepartmentMenu;
 
-    @FindBy(css = "[data-nav-panelkey=HomeGardenPetsAndDIYPanel]")
-    private WebElement homeGardenPetsDiyOption;
-
     @FindBy(css = ".nav-template>.nav-column>.nav-title.nav-item>.nav-text")
-    private List<WebElement> homeGardenPetsDiyOptions;
+    private List<WebElement> categories;
 
     public Homepage open() {
         driver.get(baseurl);
@@ -30,14 +28,19 @@ public class Homepage extends BasePage {
         return this;
     }
 
-    public Homepage shopBy() {
+    public Homepage shopBy(String departmentLocator) {
         moveTo(shopByDepartmentMenu)
-                .moveTo(homeGardenPetsDiyOption);
+                .moveTo(driver.findElement(By.cssSelector(departmentLocator)));
         return this;
     }
 
-    public List<String> getCategories() {
-        return homeGardenPetsDiyOptions.stream()
+    public Homepage selectCategory(String categoryLocator) {
+        clickWhenReady(driver.findElement(By.xpath(categoryLocator)));
+        return this;
+    }
+
+    public List<String> getDepartmentalCategories() {
+        return categories.stream()
                 .filter(element -> !element.getText().isEmpty())
                 .map(WebElement::getText)
                 .collect(Collectors.toList());

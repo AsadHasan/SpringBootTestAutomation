@@ -1,4 +1,4 @@
-package org.asad.automation.steps.view.viewproducts;
+package org.asad.automation.steps.viewProducts;
 
 import cucumber.api.java8.En;
 import org.asad.automation.pages.pagechecks.HomepageChecks;

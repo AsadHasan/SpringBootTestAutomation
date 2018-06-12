@@ -7,13 +7,22 @@ import java.util.List;
 
 @Component
 public class SearchResults extends BasePage {
-    private final String CATEGORIES_FILTER_LIST_LOCATOR = "ul.a-unordered-list.a-nostyle.a-vertical.s-ref-indent-two>div>li>span";
+    private final String FILTER_LIST_LOCATOR = "[aria-live=polite]>li>span";
 
     public SearchResults filterByCategory(String category) {
-        List<WebElement> categoriesList = getElementsWhenReady(CATEGORIES_FILTER_LIST_LOCATOR);
+        List<WebElement> categoriesList = getElementsWhenReady(FILTER_LIST_LOCATOR);
         categoriesList
                 .stream()
                 .filter(element -> element.getText().contains(category))
+                .forEach(element -> clickWhenReady(element));
+        return this;
+    }
+
+    public SearchResults filterByPrice(String price) {
+        List<WebElement> categoriesList = getElementsWhenReady(FILTER_LIST_LOCATOR);
+        categoriesList
+                .stream()
+                .filter(element -> element.getText().contains(price))
                 .forEach(element -> clickWhenReady(element));
         return this;
     }

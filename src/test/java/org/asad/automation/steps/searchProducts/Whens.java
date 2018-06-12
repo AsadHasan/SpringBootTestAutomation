@@ -15,6 +15,6 @@ public class Whens implements En {
 
     public Whens() {
         When("^I search for (.+) in (.+)$", (String product, String department) -> searchResults = homepage.searchFor(product, department));
-        When("^I filter results by (.+) and (.+)$", (String category, String price) ->searchResults.filterByCategory(category));
+        When("^I filter results by (.+) and (.+)$", (String category, String price) -> searchResults.filterByCategory(category).filterByPrice(price));
     }
 }

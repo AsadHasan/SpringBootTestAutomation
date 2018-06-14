@@ -54,4 +54,9 @@ public class BasePage {
         element.sendKeys(text);
         return this;
     }
+
+    protected String getTextWhenReady(WebElement element){
+        getWait().until(ExpectedConditions.elementToBeClickable(element));
+        return element.getText();
+    }
 }

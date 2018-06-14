@@ -13,4 +13,4 @@ Feature: Search products on Amazon
 
     Examples:
       | product                      | department              | category | price       |
-      | Microsoft Surface Pro Tablet | Computers & Accessories | Tablets  | £200 - £500 |
+      | Microsoft Surface Pro Tablet | Computers & Accessories | Tablet   | £200 - £500 |

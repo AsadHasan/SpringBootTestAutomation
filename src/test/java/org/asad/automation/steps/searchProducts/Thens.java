@@ -1,16 +1,20 @@
 package org.asad.automation.steps.searchProducts;
 
-import cucumber.api.PendingException;
 import cucumber.api.java8.En;
+import org.asad.automation.pages.pagechecks.SearchResultsPageChecks;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 public class Thens implements En {
+    @Autowired
+    private SearchResultsPageChecks searchResultsPageChecks;
+
     public Thens() {
         Then("^only results with (.+) and (.+) are shown$", (String category, String price) -> {
-            // Write code here that turns the phrase above into concrete actions
-            throw new PendingException();
+            searchResultsPageChecks.checkResultsCategory(category);
+            searchResultsPageChecks.checkResultsPrice(price);
         });
     }
 }

@@ -37,7 +37,7 @@ public class Homepage extends BasePage {
     private ProductCategoriesPage productCategoriesPage;
 
     @Autowired
-    private SearchResults searchResults;
+    private SearchResultsPage searchResultsPage;
 
     public Homepage open() {
         driver.get(baseurl);
@@ -54,6 +54,7 @@ public class Homepage extends BasePage {
 
     public ProductCategoriesPage selectCategory(String categoryLocator) {
         clickWhenReady(driver.findElement(By.xpath(categoryLocator)));
+        isLoaded();
         return productCategoriesPage;
     }
 
@@ -64,7 +65,7 @@ public class Homepage extends BasePage {
                 .collect(Collectors.toList());
     }
 
-    public SearchResults searchFor(String product, String... department) {
+    public SearchResultsPage searchFor(String product, String... department) {
         if (department.length != 0) {
             Select departmentsDropdown = new Select(departmentSelector);
             Arrays.stream(department).forEach(s -> {
@@ -72,10 +73,11 @@ public class Homepage extends BasePage {
                 whenReadyTypeIn(searchBar, product);
                 clickWhenReady(submitSearchButton);
             });
-            return searchResults;
+            return searchResultsPage;
         }
         whenReadyTypeIn(searchBar, product);
         clickWhenReady(submitSearchButton);
-        return searchResults;
+        isLoaded();
+        return searchResultsPage;
     }
 }
